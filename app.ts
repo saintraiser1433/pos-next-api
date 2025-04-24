@@ -14,6 +14,7 @@ const PORT = process.env.APP_PORT || 4000;
 
 // Middleware
 // app.use(express.json({ limit: '10mb' }));
+app.use(express.json());
 app.use(cors());
 
 // Serve static files from the 'public/uploads' directory under the '/job' route
