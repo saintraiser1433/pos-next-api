@@ -20,7 +20,7 @@ export const getProductCategory = async () => {
 
 export const createProductCategory = async (data: Omit<ProductCategory, 'id' | "status" | "createdAt">) => {
     try {
-        const response = await prisma.productCategory.create({data})
+        const response = await prisma.productCategory.create({ data })
         return response;
 
     } catch (err) {
@@ -29,7 +29,7 @@ export const createProductCategory = async (data: Omit<ProductCategory, 'id' | "
 }
 
 
-export const modifyProductCategory = async (data: ProductCategory, id: number) => {
+export const modifyProductCategory = async (data: ProductCategory) => {
     try {
         const response = await prisma.productCategory.update({
             data: {
@@ -37,7 +37,7 @@ export const modifyProductCategory = async (data: ProductCategory, id: number) =
                 status: data.status
             },
             where: {
-                id
+                id: data.id
             }
         })
         return response;

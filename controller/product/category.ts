@@ -21,7 +21,10 @@ export const insertProductCategory = async (req: Request, res: Response, next: N
     try {
         const validation = validate(productCategorySchema, body);
         const response = await createProductCategory(validation);
-        return res.status(200).json(response);
+        return res.status(200).json({
+            message: 'Successfully inserted',
+            data: response
+        });
     } catch (err) {
         next(err);
     }
@@ -29,12 +32,8 @@ export const insertProductCategory = async (req: Request, res: Response, next: N
 
 export const updateProductCategory = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     const body: ProductCategory = req.body;
-    const id = parseId(req.params.id);
-    if (!id) {
-        return res.status(400).json({ error: "Invalid Category ID." });
-    }
     try {
-        const response = await modifyProductCategory(body, id);
+        const response = await modifyProductCategory(body);
         return res.status(200).json(response);
     } catch (err) {
         next(err);
@@ -47,8 +46,10 @@ export const deleteProductCategory = async (req: Request, res: Response, next: N
         return res.status(400).json({ error: "Invalid Category ID." });
     }
     try {
-        const response = await removeProductCategory(id);
-        return res.status(200).json(response);
+        await removeProductCategory(id);
+        return res.status(200).json({
+            message: 'Successfully deleted',
+        });
     } catch (err) {
         next(err);
     }
