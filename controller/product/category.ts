@@ -34,7 +34,10 @@ export const updateProductCategory = async (req: Request, res: Response, next: N
     const body: ProductCategory = req.body;
     try {
         const response = await modifyProductCategory(body);
-        return res.status(200).json(response);
+        return res.status(200).json({
+            message: 'Successfully updated',
+            data: response
+        });
     } catch (err) {
         next(err);
     }
