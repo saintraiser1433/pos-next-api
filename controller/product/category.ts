@@ -3,8 +3,7 @@ import { createProductCategory, getProductCategory, modifyProductCategory, remov
 import { ProductCategory } from "@prisma/client";
 import { parseId } from "@utils/parseId";
 import { validate } from "@utils/validation";
-import { z } from "zod";
-import { productCategorySchema } from "schemas/productCategory";
+import { productCategorySchema } from "schemas/schemas";
 
 export const fetchProductCategory = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     try {

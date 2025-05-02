@@ -18,7 +18,7 @@ export const getProductCategory = async () => {
     }
 }
 
-export const createProductCategory = async (data: Omit<ProductCategory, 'id' | "status" | "createdAt">) => {
+export const createProductCategory = async (data: Omit<ProductCategory, 'id' | "status" | "createdAt" | "updatedAt">) => {
     try {
         const response = await prisma.productCategory.create({ data })
         return response;
