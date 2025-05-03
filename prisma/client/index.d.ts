@@ -33,6 +33,11 @@ export type Variations = $Result.DefaultSelection<Prisma.$VariationsPayload>
  * 
  */
 export type Unit = $Result.DefaultSelection<Prisma.$UnitPayload>
+/**
+ * Model BaseUnit
+ * 
+ */
+export type BaseUnit = $Result.DefaultSelection<Prisma.$BaseUnitPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get unit(): Prisma.UnitDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.baseUnit`: Exposes CRUD operations for the **BaseUnit** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BaseUnits
+    * const baseUnits = await prisma.baseUnit.findMany()
+    * ```
+    */
+  get baseUnit(): Prisma.BaseUnitDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +656,8 @@ export namespace Prisma {
     ProductCategory: 'ProductCategory',
     Brand: 'Brand',
     Variations: 'Variations',
-    Unit: 'Unit'
+    Unit: 'Unit',
+    BaseUnit: 'BaseUnit'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "productCategory" | "brand" | "variations" | "unit"
+      modelProps: "productCategory" | "brand" | "variations" | "unit" | "baseUnit"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +976,80 @@ export namespace Prisma {
           }
         }
       }
+      BaseUnit: {
+        payload: Prisma.$BaseUnitPayload<ExtArgs>
+        fields: Prisma.BaseUnitFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BaseUnitFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BaseUnitFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>
+          }
+          findFirst: {
+            args: Prisma.BaseUnitFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BaseUnitFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>
+          }
+          findMany: {
+            args: Prisma.BaseUnitFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>[]
+          }
+          create: {
+            args: Prisma.BaseUnitCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>
+          }
+          createMany: {
+            args: Prisma.BaseUnitCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BaseUnitCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>[]
+          }
+          delete: {
+            args: Prisma.BaseUnitDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>
+          }
+          update: {
+            args: Prisma.BaseUnitUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>
+          }
+          deleteMany: {
+            args: Prisma.BaseUnitDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BaseUnitUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BaseUnitUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>[]
+          }
+          upsert: {
+            args: Prisma.BaseUnitUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BaseUnitPayload>
+          }
+          aggregate: {
+            args: Prisma.BaseUnitAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBaseUnit>
+          }
+          groupBy: {
+            args: Prisma.BaseUnitGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BaseUnitGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BaseUnitCountArgs<ExtArgs>
+            result: $Utils.Optional<BaseUnitCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1138,7 @@ export namespace Prisma {
     brand?: BrandOmit
     variations?: VariationsOmit
     unit?: UnitOmit
+    baseUnit?: BaseUnitOmit
   }
 
   /* Types for Logging */
@@ -5298,6 +5389,1022 @@ export namespace Prisma {
 
 
   /**
+   * Model BaseUnit
+   */
+
+  export type AggregateBaseUnit = {
+    _count: BaseUnitCountAggregateOutputType | null
+    _avg: BaseUnitAvgAggregateOutputType | null
+    _sum: BaseUnitSumAggregateOutputType | null
+    _min: BaseUnitMinAggregateOutputType | null
+    _max: BaseUnitMaxAggregateOutputType | null
+  }
+
+  export type BaseUnitAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BaseUnitSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BaseUnitMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BaseUnitMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BaseUnitCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BaseUnitAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type BaseUnitSumAggregateInputType = {
+    id?: true
+  }
+
+  export type BaseUnitMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BaseUnitMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BaseUnitCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BaseUnitAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BaseUnit to aggregate.
+     */
+    where?: BaseUnitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BaseUnits to fetch.
+     */
+    orderBy?: BaseUnitOrderByWithRelationInput | BaseUnitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BaseUnitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BaseUnits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BaseUnits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BaseUnits
+    **/
+    _count?: true | BaseUnitCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BaseUnitAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BaseUnitSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BaseUnitMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BaseUnitMaxAggregateInputType
+  }
+
+  export type GetBaseUnitAggregateType<T extends BaseUnitAggregateArgs> = {
+        [P in keyof T & keyof AggregateBaseUnit]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBaseUnit[P]>
+      : GetScalarType<T[P], AggregateBaseUnit[P]>
+  }
+
+
+
+
+  export type BaseUnitGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BaseUnitWhereInput
+    orderBy?: BaseUnitOrderByWithAggregationInput | BaseUnitOrderByWithAggregationInput[]
+    by: BaseUnitScalarFieldEnum[] | BaseUnitScalarFieldEnum
+    having?: BaseUnitScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BaseUnitCountAggregateInputType | true
+    _avg?: BaseUnitAvgAggregateInputType
+    _sum?: BaseUnitSumAggregateInputType
+    _min?: BaseUnitMinAggregateInputType
+    _max?: BaseUnitMaxAggregateInputType
+  }
+
+  export type BaseUnitGroupByOutputType = {
+    id: number
+    name: string
+    createdAt: Date
+    updatedAt: Date | null
+    _count: BaseUnitCountAggregateOutputType | null
+    _avg: BaseUnitAvgAggregateOutputType | null
+    _sum: BaseUnitSumAggregateOutputType | null
+    _min: BaseUnitMinAggregateOutputType | null
+    _max: BaseUnitMaxAggregateOutputType | null
+  }
+
+  type GetBaseUnitGroupByPayload<T extends BaseUnitGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BaseUnitGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BaseUnitGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BaseUnitGroupByOutputType[P]>
+            : GetScalarType<T[P], BaseUnitGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BaseUnitSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["baseUnit"]>
+
+  export type BaseUnitSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["baseUnit"]>
+
+  export type BaseUnitSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["baseUnit"]>
+
+  export type BaseUnitSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BaseUnitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["baseUnit"]>
+
+  export type $BaseUnitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BaseUnit"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["baseUnit"]>
+    composites: {}
+  }
+
+  type BaseUnitGetPayload<S extends boolean | null | undefined | BaseUnitDefaultArgs> = $Result.GetResult<Prisma.$BaseUnitPayload, S>
+
+  type BaseUnitCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BaseUnitFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BaseUnitCountAggregateInputType | true
+    }
+
+  export interface BaseUnitDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BaseUnit'], meta: { name: 'BaseUnit' } }
+    /**
+     * Find zero or one BaseUnit that matches the filter.
+     * @param {BaseUnitFindUniqueArgs} args - Arguments to find a BaseUnit
+     * @example
+     * // Get one BaseUnit
+     * const baseUnit = await prisma.baseUnit.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BaseUnitFindUniqueArgs>(args: SelectSubset<T, BaseUnitFindUniqueArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BaseUnit that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BaseUnitFindUniqueOrThrowArgs} args - Arguments to find a BaseUnit
+     * @example
+     * // Get one BaseUnit
+     * const baseUnit = await prisma.baseUnit.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BaseUnitFindUniqueOrThrowArgs>(args: SelectSubset<T, BaseUnitFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BaseUnit that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BaseUnitFindFirstArgs} args - Arguments to find a BaseUnit
+     * @example
+     * // Get one BaseUnit
+     * const baseUnit = await prisma.baseUnit.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BaseUnitFindFirstArgs>(args?: SelectSubset<T, BaseUnitFindFirstArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BaseUnit that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BaseUnitFindFirstOrThrowArgs} args - Arguments to find a BaseUnit
+     * @example
+     * // Get one BaseUnit
+     * const baseUnit = await prisma.baseUnit.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BaseUnitFindFirstOrThrowArgs>(args?: SelectSubset<T, BaseUnitFindFirstOrThrowArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BaseUnits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BaseUnitFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BaseUnits
+     * const baseUnits = await prisma.baseUnit.findMany()
+     * 
+     * // Get first 10 BaseUnits
+     * const baseUnits = await prisma.baseUnit.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const baseUnitWithIdOnly = await prisma.baseUnit.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BaseUnitFindManyArgs>(args?: SelectSubset<T, BaseUnitFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BaseUnit.
+     * @param {BaseUnitCreateArgs} args - Arguments to create a BaseUnit.
+     * @example
+     * // Create one BaseUnit
+     * const BaseUnit = await prisma.baseUnit.create({
+     *   data: {
+     *     // ... data to create a BaseUnit
+     *   }
+     * })
+     * 
+     */
+    create<T extends BaseUnitCreateArgs>(args: SelectSubset<T, BaseUnitCreateArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BaseUnits.
+     * @param {BaseUnitCreateManyArgs} args - Arguments to create many BaseUnits.
+     * @example
+     * // Create many BaseUnits
+     * const baseUnit = await prisma.baseUnit.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BaseUnitCreateManyArgs>(args?: SelectSubset<T, BaseUnitCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BaseUnits and returns the data saved in the database.
+     * @param {BaseUnitCreateManyAndReturnArgs} args - Arguments to create many BaseUnits.
+     * @example
+     * // Create many BaseUnits
+     * const baseUnit = await prisma.baseUnit.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BaseUnits and only return the `id`
+     * const baseUnitWithIdOnly = await prisma.baseUnit.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BaseUnitCreateManyAndReturnArgs>(args?: SelectSubset<T, BaseUnitCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BaseUnit.
+     * @param {BaseUnitDeleteArgs} args - Arguments to delete one BaseUnit.
+     * @example
+     * // Delete one BaseUnit
+     * const BaseUnit = await prisma.baseUnit.delete({
+     *   where: {
+     *     // ... filter to delete one BaseUnit
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BaseUnitDeleteArgs>(args: SelectSubset<T, BaseUnitDeleteArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BaseUnit.
+     * @param {BaseUnitUpdateArgs} args - Arguments to update one BaseUnit.
+     * @example
+     * // Update one BaseUnit
+     * const baseUnit = await prisma.baseUnit.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BaseUnitUpdateArgs>(args: SelectSubset<T, BaseUnitUpdateArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BaseUnits.
+     * @param {BaseUnitDeleteManyArgs} args - Arguments to filter BaseUnits to delete.
+     * @example
+     * // Delete a few BaseUnits
+     * const { count } = await prisma.baseUnit.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BaseUnitDeleteManyArgs>(args?: SelectSubset<T, BaseUnitDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BaseUnits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BaseUnitUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BaseUnits
+     * const baseUnit = await prisma.baseUnit.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BaseUnitUpdateManyArgs>(args: SelectSubset<T, BaseUnitUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BaseUnits and returns the data updated in the database.
+     * @param {BaseUnitUpdateManyAndReturnArgs} args - Arguments to update many BaseUnits.
+     * @example
+     * // Update many BaseUnits
+     * const baseUnit = await prisma.baseUnit.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BaseUnits and only return the `id`
+     * const baseUnitWithIdOnly = await prisma.baseUnit.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BaseUnitUpdateManyAndReturnArgs>(args: SelectSubset<T, BaseUnitUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BaseUnit.
+     * @param {BaseUnitUpsertArgs} args - Arguments to update or create a BaseUnit.
+     * @example
+     * // Update or create a BaseUnit
+     * const baseUnit = await prisma.baseUnit.upsert({
+     *   create: {
+     *     // ... data to create a BaseUnit
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BaseUnit we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BaseUnitUpsertArgs>(args: SelectSubset<T, BaseUnitUpsertArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BaseUnits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BaseUnitCountArgs} args - Arguments to filter BaseUnits to count.
+     * @example
+     * // Count the number of BaseUnits
+     * const count = await prisma.baseUnit.count({
+     *   where: {
+     *     // ... the filter for the BaseUnits we want to count
+     *   }
+     * })
+    **/
+    count<T extends BaseUnitCountArgs>(
+      args?: Subset<T, BaseUnitCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BaseUnitCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BaseUnit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BaseUnitAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BaseUnitAggregateArgs>(args: Subset<T, BaseUnitAggregateArgs>): Prisma.PrismaPromise<GetBaseUnitAggregateType<T>>
+
+    /**
+     * Group by BaseUnit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BaseUnitGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BaseUnitGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BaseUnitGroupByArgs['orderBy'] }
+        : { orderBy?: BaseUnitGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BaseUnitGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBaseUnitGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BaseUnit model
+   */
+  readonly fields: BaseUnitFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BaseUnit.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BaseUnitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BaseUnit model
+   */
+  interface BaseUnitFieldRefs {
+    readonly id: FieldRef<"BaseUnit", 'Int'>
+    readonly name: FieldRef<"BaseUnit", 'String'>
+    readonly createdAt: FieldRef<"BaseUnit", 'DateTime'>
+    readonly updatedAt: FieldRef<"BaseUnit", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BaseUnit findUnique
+   */
+  export type BaseUnitFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Filter, which BaseUnit to fetch.
+     */
+    where: BaseUnitWhereUniqueInput
+  }
+
+  /**
+   * BaseUnit findUniqueOrThrow
+   */
+  export type BaseUnitFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Filter, which BaseUnit to fetch.
+     */
+    where: BaseUnitWhereUniqueInput
+  }
+
+  /**
+   * BaseUnit findFirst
+   */
+  export type BaseUnitFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Filter, which BaseUnit to fetch.
+     */
+    where?: BaseUnitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BaseUnits to fetch.
+     */
+    orderBy?: BaseUnitOrderByWithRelationInput | BaseUnitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BaseUnits.
+     */
+    cursor?: BaseUnitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BaseUnits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BaseUnits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BaseUnits.
+     */
+    distinct?: BaseUnitScalarFieldEnum | BaseUnitScalarFieldEnum[]
+  }
+
+  /**
+   * BaseUnit findFirstOrThrow
+   */
+  export type BaseUnitFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Filter, which BaseUnit to fetch.
+     */
+    where?: BaseUnitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BaseUnits to fetch.
+     */
+    orderBy?: BaseUnitOrderByWithRelationInput | BaseUnitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BaseUnits.
+     */
+    cursor?: BaseUnitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BaseUnits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BaseUnits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BaseUnits.
+     */
+    distinct?: BaseUnitScalarFieldEnum | BaseUnitScalarFieldEnum[]
+  }
+
+  /**
+   * BaseUnit findMany
+   */
+  export type BaseUnitFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Filter, which BaseUnits to fetch.
+     */
+    where?: BaseUnitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BaseUnits to fetch.
+     */
+    orderBy?: BaseUnitOrderByWithRelationInput | BaseUnitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BaseUnits.
+     */
+    cursor?: BaseUnitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BaseUnits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BaseUnits.
+     */
+    skip?: number
+    distinct?: BaseUnitScalarFieldEnum | BaseUnitScalarFieldEnum[]
+  }
+
+  /**
+   * BaseUnit create
+   */
+  export type BaseUnitCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * The data needed to create a BaseUnit.
+     */
+    data: XOR<BaseUnitCreateInput, BaseUnitUncheckedCreateInput>
+  }
+
+  /**
+   * BaseUnit createMany
+   */
+  export type BaseUnitCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BaseUnits.
+     */
+    data: BaseUnitCreateManyInput | BaseUnitCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BaseUnit createManyAndReturn
+   */
+  export type BaseUnitCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * The data used to create many BaseUnits.
+     */
+    data: BaseUnitCreateManyInput | BaseUnitCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BaseUnit update
+   */
+  export type BaseUnitUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * The data needed to update a BaseUnit.
+     */
+    data: XOR<BaseUnitUpdateInput, BaseUnitUncheckedUpdateInput>
+    /**
+     * Choose, which BaseUnit to update.
+     */
+    where: BaseUnitWhereUniqueInput
+  }
+
+  /**
+   * BaseUnit updateMany
+   */
+  export type BaseUnitUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BaseUnits.
+     */
+    data: XOR<BaseUnitUpdateManyMutationInput, BaseUnitUncheckedUpdateManyInput>
+    /**
+     * Filter which BaseUnits to update
+     */
+    where?: BaseUnitWhereInput
+    /**
+     * Limit how many BaseUnits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BaseUnit updateManyAndReturn
+   */
+  export type BaseUnitUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * The data used to update BaseUnits.
+     */
+    data: XOR<BaseUnitUpdateManyMutationInput, BaseUnitUncheckedUpdateManyInput>
+    /**
+     * Filter which BaseUnits to update
+     */
+    where?: BaseUnitWhereInput
+    /**
+     * Limit how many BaseUnits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BaseUnit upsert
+   */
+  export type BaseUnitUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * The filter to search for the BaseUnit to update in case it exists.
+     */
+    where: BaseUnitWhereUniqueInput
+    /**
+     * In case the BaseUnit found by the `where` argument doesn't exist, create a new BaseUnit with this data.
+     */
+    create: XOR<BaseUnitCreateInput, BaseUnitUncheckedCreateInput>
+    /**
+     * In case the BaseUnit was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BaseUnitUpdateInput, BaseUnitUncheckedUpdateInput>
+  }
+
+  /**
+   * BaseUnit delete
+   */
+  export type BaseUnitDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Filter which BaseUnit to delete.
+     */
+    where: BaseUnitWhereUniqueInput
+  }
+
+  /**
+   * BaseUnit deleteMany
+   */
+  export type BaseUnitDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BaseUnits to delete
+     */
+    where?: BaseUnitWhereInput
+    /**
+     * Limit how many BaseUnits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BaseUnit without action
+   */
+  export type BaseUnitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnit
+     */
+    select?: BaseUnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BaseUnit
+     */
+    omit?: BaseUnitOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5356,6 +6463,16 @@ export namespace Prisma {
   };
 
   export type UnitScalarFieldEnum = (typeof UnitScalarFieldEnum)[keyof typeof UnitScalarFieldEnum]
+
+
+  export const BaseUnitScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BaseUnitScalarFieldEnum = (typeof BaseUnitScalarFieldEnum)[keyof typeof BaseUnitScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5684,6 +6801,55 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Unit"> | Date | string | null
   }
 
+  export type BaseUnitWhereInput = {
+    AND?: BaseUnitWhereInput | BaseUnitWhereInput[]
+    OR?: BaseUnitWhereInput[]
+    NOT?: BaseUnitWhereInput | BaseUnitWhereInput[]
+    id?: IntFilter<"BaseUnit"> | number
+    name?: StringFilter<"BaseUnit"> | string
+    createdAt?: DateTimeFilter<"BaseUnit"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"BaseUnit"> | Date | string | null
+  }
+
+  export type BaseUnitOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+  }
+
+  export type BaseUnitWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: BaseUnitWhereInput | BaseUnitWhereInput[]
+    OR?: BaseUnitWhereInput[]
+    NOT?: BaseUnitWhereInput | BaseUnitWhereInput[]
+    createdAt?: DateTimeFilter<"BaseUnit"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"BaseUnit"> | Date | string | null
+  }, "id" | "name">
+
+  export type BaseUnitOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: BaseUnitCountOrderByAggregateInput
+    _avg?: BaseUnitAvgOrderByAggregateInput
+    _max?: BaseUnitMaxOrderByAggregateInput
+    _min?: BaseUnitMinOrderByAggregateInput
+    _sum?: BaseUnitSumOrderByAggregateInput
+  }
+
+  export type BaseUnitScalarWhereWithAggregatesInput = {
+    AND?: BaseUnitScalarWhereWithAggregatesInput | BaseUnitScalarWhereWithAggregatesInput[]
+    OR?: BaseUnitScalarWhereWithAggregatesInput[]
+    NOT?: BaseUnitScalarWhereWithAggregatesInput | BaseUnitScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BaseUnit"> | number
+    name?: StringWithAggregatesFilter<"BaseUnit"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"BaseUnit"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"BaseUnit"> | Date | string | null
+  }
+
   export type ProductCategoryCreateInput = {
     name: string
     status?: boolean
@@ -5913,6 +7079,52 @@ export namespace Prisma {
     shortName?: StringFieldUpdateOperationsInput | string
     baseUnit?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BaseUnitCreateInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type BaseUnitUncheckedCreateInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type BaseUnitUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BaseUnitUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BaseUnitCreateManyInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type BaseUnitUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BaseUnitUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -6179,6 +7391,35 @@ export namespace Prisma {
   }
 
   export type UnitSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BaseUnitCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BaseUnitAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BaseUnitMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BaseUnitMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BaseUnitSumOrderByAggregateInput = {
     id?: SortOrder
   }
 

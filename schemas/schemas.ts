@@ -27,3 +27,7 @@ export const productUnit = z.object({
   status: z.boolean().optional(),
 }).strict();
 
+export const productBaseUnit = z.object({
+  name: z.string().min(1, "Base Unit Name cannot be empty"),
+}).strict();
+

@@ -152,6 +152,13 @@ exports.Prisma.UnitScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.BaseUnitScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -172,7 +179,8 @@ exports.Prisma.ModelName = {
   ProductCategory: 'ProductCategory',
   Brand: 'Brand',
   Variations: 'Variations',
-  Unit: 'Unit'
+  Unit: 'Unit',
+  BaseUnit: 'BaseUnit'
 };
 
 /**
