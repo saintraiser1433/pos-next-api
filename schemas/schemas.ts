@@ -8,9 +8,19 @@ export const productCategorySchema = z.object({
 }).strict();
 
 export const productBrandSchema = z.object({
+  brandImage: z
+    .union([
+      z.instanceof(File).refine((file) => file.size !== 0, {
+        message: 'Please upload a non-empty image',
+      }),
+      z.undefined(),
+      z.null(),
+    ])
+    .optional(),
   name: z.string({
     required_error: "Brand name is required",
   }).min(1, "Brand name cannot be empty"),
+  description: z.string().min(1, "Brand Description cannot be empty"),
   status: z.boolean().optional(),
 }).strict();
 
@@ -24,6 +34,8 @@ export const productUnit = z.object({
   name: z.string().min(1, "Unit Name cannot be empty"),
   shortName: z.string().min(1, "Short Name cannot be empty"),
   baseUnit: z.string().min(1, "Base Unit cannot be empty"),
+  operator: z.string().min(1, "Base Unit cannot be empty"),
+  operationValue: z.number().min(1, "Operator value cannot be empty"),
   status: z.boolean().optional(),
 }).strict();
 

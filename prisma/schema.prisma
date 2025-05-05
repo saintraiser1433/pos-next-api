@@ -23,11 +23,13 @@ model ProductCategory {
 }
 
 model Brand {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  status    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  description String
+  brandImage  String
+  status      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
 }
 
 model Variations {
@@ -40,13 +42,15 @@ model Variations {
 }
 
 model Unit {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  shortName String    @db.VarChar(100)
-  baseUnit  String    @db.VarChar(100)
-  status    Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  id             Int       @id @default(autoincrement())
+  name           String    @unique
+  shortName      String    @db.VarChar(100)
+  baseUnit       String    @db.VarChar(100)
+  status         Boolean   @default(true)
+  operator       String    @db.VarChar(100)
+  operationValue Int       @db.Integer
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime? @updatedAt
 }
 
 model BaseUnit {

@@ -18,9 +18,15 @@ export const getProductBrand = async () => {
     }
 }
 
-export const createProductBrand = async (data: Omit<Brand, 'id' | "status" | "createdAt" | "updatedAt">) => {
+export const createProductBrand = async (data: Omit<Brand, 'id' | "status" | "brandImage" | "createdAt" | "updatedAt">, brandImage: any) => {
     try {
-        const response = await prisma.brand.create({ data })
+        const response = await prisma.brand.create({
+            data: {
+                name: data.name,
+                description: data.description,
+                brandImage
+            }
+        })
         return response;
 
     } catch (err) {
@@ -29,11 +35,16 @@ export const createProductBrand = async (data: Omit<Brand, 'id' | "status" | "cr
 }
 
 
-export const modifyProductBrand = async (data: Brand) => {
-    const { id, ...updateData } = data;
+export const modifyProductBrand = async (data: Brand, imageName: any) => {
+    const { id, brandImage, ...updateData } = data;
     try {
         const response = await prisma.brand.update({
-            data: updateData,
+            data: {
+                name: updateData.name,
+                brandImage: imageName,
+                description: updateData.description,
+                status: updateData.status
+            },
             where: {
                 id
             }

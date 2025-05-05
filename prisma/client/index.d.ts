@@ -2285,6 +2285,8 @@ export namespace Prisma {
   export type BrandMinAggregateOutputType = {
     id: number | null
     name: string | null
+    description: string | null
+    brandImage: string | null
     status: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2293,6 +2295,8 @@ export namespace Prisma {
   export type BrandMaxAggregateOutputType = {
     id: number | null
     name: string | null
+    description: string | null
+    brandImage: string | null
     status: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2301,6 +2305,8 @@ export namespace Prisma {
   export type BrandCountAggregateOutputType = {
     id: number
     name: number
+    description: number
+    brandImage: number
     status: number
     createdAt: number
     updatedAt: number
@@ -2319,6 +2325,8 @@ export namespace Prisma {
   export type BrandMinAggregateInputType = {
     id?: true
     name?: true
+    description?: true
+    brandImage?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -2327,6 +2335,8 @@ export namespace Prisma {
   export type BrandMaxAggregateInputType = {
     id?: true
     name?: true
+    description?: true
+    brandImage?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -2335,6 +2345,8 @@ export namespace Prisma {
   export type BrandCountAggregateInputType = {
     id?: true
     name?: true
+    description?: true
+    brandImage?: true
     status?: true
     createdAt?: true
     updatedAt?: true
@@ -2430,6 +2442,8 @@ export namespace Prisma {
   export type BrandGroupByOutputType = {
     id: number
     name: string
+    description: string
+    brandImage: string
     status: boolean
     createdAt: Date
     updatedAt: Date | null
@@ -2457,6 +2471,8 @@ export namespace Prisma {
   export type BrandSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
+    brandImage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2465,6 +2481,8 @@ export namespace Prisma {
   export type BrandSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
+    brandImage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2473,6 +2491,8 @@ export namespace Prisma {
   export type BrandSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
+    brandImage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2481,12 +2501,14 @@ export namespace Prisma {
   export type BrandSelectScalar = {
     id?: boolean
     name?: boolean
+    description?: boolean
+    brandImage?: boolean
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BrandOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
+  export type BrandOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "brandImage" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["brand"]>
 
   export type $BrandPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Brand"
@@ -2494,6 +2516,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
+      description: string
+      brandImage: string
       status: boolean
       createdAt: Date
       updatedAt: Date | null
@@ -2922,6 +2946,8 @@ export namespace Prisma {
   interface BrandFieldRefs {
     readonly id: FieldRef<"Brand", 'Int'>
     readonly name: FieldRef<"Brand", 'String'>
+    readonly description: FieldRef<"Brand", 'String'>
+    readonly brandImage: FieldRef<"Brand", 'String'>
     readonly status: FieldRef<"Brand", 'Boolean'>
     readonly createdAt: FieldRef<"Brand", 'DateTime'>
     readonly updatedAt: FieldRef<"Brand", 'DateTime'>
@@ -4347,10 +4373,12 @@ export namespace Prisma {
 
   export type UnitAvgAggregateOutputType = {
     id: number | null
+    operationValue: number | null
   }
 
   export type UnitSumAggregateOutputType = {
     id: number | null
+    operationValue: number | null
   }
 
   export type UnitMinAggregateOutputType = {
@@ -4359,6 +4387,8 @@ export namespace Prisma {
     shortName: string | null
     baseUnit: string | null
     status: boolean | null
+    operator: string | null
+    operationValue: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4369,6 +4399,8 @@ export namespace Prisma {
     shortName: string | null
     baseUnit: string | null
     status: boolean | null
+    operator: string | null
+    operationValue: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4379,6 +4411,8 @@ export namespace Prisma {
     shortName: number
     baseUnit: number
     status: number
+    operator: number
+    operationValue: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4387,10 +4421,12 @@ export namespace Prisma {
 
   export type UnitAvgAggregateInputType = {
     id?: true
+    operationValue?: true
   }
 
   export type UnitSumAggregateInputType = {
     id?: true
+    operationValue?: true
   }
 
   export type UnitMinAggregateInputType = {
@@ -4399,6 +4435,8 @@ export namespace Prisma {
     shortName?: true
     baseUnit?: true
     status?: true
+    operator?: true
+    operationValue?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4409,6 +4447,8 @@ export namespace Prisma {
     shortName?: true
     baseUnit?: true
     status?: true
+    operator?: true
+    operationValue?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4419,6 +4459,8 @@ export namespace Prisma {
     shortName?: true
     baseUnit?: true
     status?: true
+    operator?: true
+    operationValue?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4516,6 +4558,8 @@ export namespace Prisma {
     shortName: string
     baseUnit: string
     status: boolean
+    operator: string
+    operationValue: number
     createdAt: Date
     updatedAt: Date | null
     _count: UnitCountAggregateOutputType | null
@@ -4545,6 +4589,8 @@ export namespace Prisma {
     shortName?: boolean
     baseUnit?: boolean
     status?: boolean
+    operator?: boolean
+    operationValue?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["unit"]>
@@ -4555,6 +4601,8 @@ export namespace Prisma {
     shortName?: boolean
     baseUnit?: boolean
     status?: boolean
+    operator?: boolean
+    operationValue?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["unit"]>
@@ -4565,6 +4613,8 @@ export namespace Prisma {
     shortName?: boolean
     baseUnit?: boolean
     status?: boolean
+    operator?: boolean
+    operationValue?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["unit"]>
@@ -4575,11 +4625,13 @@ export namespace Prisma {
     shortName?: boolean
     baseUnit?: boolean
     status?: boolean
+    operator?: boolean
+    operationValue?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UnitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "shortName" | "baseUnit" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["unit"]>
+  export type UnitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "shortName" | "baseUnit" | "status" | "operator" | "operationValue" | "createdAt" | "updatedAt", ExtArgs["result"]["unit"]>
 
   export type $UnitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Unit"
@@ -4590,6 +4642,8 @@ export namespace Prisma {
       shortName: string
       baseUnit: string
       status: boolean
+      operator: string
+      operationValue: number
       createdAt: Date
       updatedAt: Date | null
     }, ExtArgs["result"]["unit"]>
@@ -5020,6 +5074,8 @@ export namespace Prisma {
     readonly shortName: FieldRef<"Unit", 'String'>
     readonly baseUnit: FieldRef<"Unit", 'String'>
     readonly status: FieldRef<"Unit", 'Boolean'>
+    readonly operator: FieldRef<"Unit", 'String'>
+    readonly operationValue: FieldRef<"Unit", 'Int'>
     readonly createdAt: FieldRef<"Unit", 'DateTime'>
     readonly updatedAt: FieldRef<"Unit", 'DateTime'>
   }
@@ -6432,6 +6488,8 @@ export namespace Prisma {
   export const BrandScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    description: 'description',
+    brandImage: 'brandImage',
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -6458,6 +6516,8 @@ export namespace Prisma {
     shortName: 'shortName',
     baseUnit: 'baseUnit',
     status: 'status',
+    operator: 'operator',
+    operationValue: 'operationValue',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6630,6 +6690,8 @@ export namespace Prisma {
     NOT?: BrandWhereInput | BrandWhereInput[]
     id?: IntFilter<"Brand"> | number
     name?: StringFilter<"Brand"> | string
+    description?: StringFilter<"Brand"> | string
+    brandImage?: StringFilter<"Brand"> | string
     status?: BoolFilter<"Brand"> | boolean
     createdAt?: DateTimeFilter<"Brand"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Brand"> | Date | string | null
@@ -6638,6 +6700,8 @@ export namespace Prisma {
   export type BrandOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
+    brandImage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -6649,6 +6713,8 @@ export namespace Prisma {
     AND?: BrandWhereInput | BrandWhereInput[]
     OR?: BrandWhereInput[]
     NOT?: BrandWhereInput | BrandWhereInput[]
+    description?: StringFilter<"Brand"> | string
+    brandImage?: StringFilter<"Brand"> | string
     status?: BoolFilter<"Brand"> | boolean
     createdAt?: DateTimeFilter<"Brand"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Brand"> | Date | string | null
@@ -6657,6 +6723,8 @@ export namespace Prisma {
   export type BrandOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
+    brandImage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -6673,6 +6741,8 @@ export namespace Prisma {
     NOT?: BrandScalarWhereWithAggregatesInput | BrandScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Brand"> | number
     name?: StringWithAggregatesFilter<"Brand"> | string
+    description?: StringWithAggregatesFilter<"Brand"> | string
+    brandImage?: StringWithAggregatesFilter<"Brand"> | string
     status?: BoolWithAggregatesFilter<"Brand"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Brand"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Brand"> | Date | string | null
@@ -6746,6 +6816,8 @@ export namespace Prisma {
     shortName?: StringFilter<"Unit"> | string
     baseUnit?: StringFilter<"Unit"> | string
     status?: BoolFilter<"Unit"> | boolean
+    operator?: StringFilter<"Unit"> | string
+    operationValue?: IntFilter<"Unit"> | number
     createdAt?: DateTimeFilter<"Unit"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Unit"> | Date | string | null
   }
@@ -6756,6 +6828,8 @@ export namespace Prisma {
     shortName?: SortOrder
     baseUnit?: SortOrder
     status?: SortOrder
+    operator?: SortOrder
+    operationValue?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
   }
@@ -6769,6 +6843,8 @@ export namespace Prisma {
     shortName?: StringFilter<"Unit"> | string
     baseUnit?: StringFilter<"Unit"> | string
     status?: BoolFilter<"Unit"> | boolean
+    operator?: StringFilter<"Unit"> | string
+    operationValue?: IntFilter<"Unit"> | number
     createdAt?: DateTimeFilter<"Unit"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Unit"> | Date | string | null
   }, "id" | "name">
@@ -6779,6 +6855,8 @@ export namespace Prisma {
     shortName?: SortOrder
     baseUnit?: SortOrder
     status?: SortOrder
+    operator?: SortOrder
+    operationValue?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: UnitCountOrderByAggregateInput
@@ -6797,6 +6875,8 @@ export namespace Prisma {
     shortName?: StringWithAggregatesFilter<"Unit"> | string
     baseUnit?: StringWithAggregatesFilter<"Unit"> | string
     status?: BoolWithAggregatesFilter<"Unit"> | boolean
+    operator?: StringWithAggregatesFilter<"Unit"> | string
+    operationValue?: IntWithAggregatesFilter<"Unit"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Unit"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Unit"> | Date | string | null
   }
@@ -6905,6 +6985,8 @@ export namespace Prisma {
 
   export type BrandCreateInput = {
     name: string
+    description: string
+    brandImage: string
     status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -6913,6 +6995,8 @@ export namespace Prisma {
   export type BrandUncheckedCreateInput = {
     id?: number
     name: string
+    description: string
+    brandImage: string
     status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -6920,6 +7004,8 @@ export namespace Prisma {
 
   export type BrandUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    brandImage?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6928,6 +7014,8 @@ export namespace Prisma {
   export type BrandUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    brandImage?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6936,6 +7024,8 @@ export namespace Prisma {
   export type BrandCreateManyInput = {
     id?: number
     name: string
+    description: string
+    brandImage: string
     status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -6943,6 +7033,8 @@ export namespace Prisma {
 
   export type BrandUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    brandImage?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -6951,6 +7043,8 @@ export namespace Prisma {
   export type BrandUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    brandImage?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7021,6 +7115,8 @@ export namespace Prisma {
     shortName: string
     baseUnit: string
     status?: boolean
+    operator: string
+    operationValue: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -7031,6 +7127,8 @@ export namespace Prisma {
     shortName: string
     baseUnit: string
     status?: boolean
+    operator: string
+    operationValue: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -7040,6 +7138,8 @@ export namespace Prisma {
     shortName?: StringFieldUpdateOperationsInput | string
     baseUnit?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    operator?: StringFieldUpdateOperationsInput | string
+    operationValue?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -7050,6 +7150,8 @@ export namespace Prisma {
     shortName?: StringFieldUpdateOperationsInput | string
     baseUnit?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    operator?: StringFieldUpdateOperationsInput | string
+    operationValue?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -7060,6 +7162,8 @@ export namespace Prisma {
     shortName: string
     baseUnit: string
     status?: boolean
+    operator: string
+    operationValue: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -7069,6 +7173,8 @@ export namespace Prisma {
     shortName?: StringFieldUpdateOperationsInput | string
     baseUnit?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    operator?: StringFieldUpdateOperationsInput | string
+    operationValue?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -7079,6 +7185,8 @@ export namespace Prisma {
     shortName?: StringFieldUpdateOperationsInput | string
     baseUnit?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
+    operator?: StringFieldUpdateOperationsInput | string
+    operationValue?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -7292,6 +7400,8 @@ export namespace Prisma {
   export type BrandCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
+    brandImage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7304,6 +7414,8 @@ export namespace Prisma {
   export type BrandMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
+    brandImage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7312,6 +7424,8 @@ export namespace Prisma {
   export type BrandMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
+    brandImage?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7362,12 +7476,15 @@ export namespace Prisma {
     shortName?: SortOrder
     baseUnit?: SortOrder
     status?: SortOrder
+    operator?: SortOrder
+    operationValue?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type UnitAvgOrderByAggregateInput = {
     id?: SortOrder
+    operationValue?: SortOrder
   }
 
   export type UnitMaxOrderByAggregateInput = {
@@ -7376,6 +7493,8 @@ export namespace Prisma {
     shortName?: SortOrder
     baseUnit?: SortOrder
     status?: SortOrder
+    operator?: SortOrder
+    operationValue?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7386,12 +7505,15 @@ export namespace Prisma {
     shortName?: SortOrder
     baseUnit?: SortOrder
     status?: SortOrder
+    operator?: SortOrder
+    operationValue?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type UnitSumOrderByAggregateInput = {
     id?: SortOrder
+    operationValue?: SortOrder
   }
 
   export type BaseUnitCountOrderByAggregateInput = {

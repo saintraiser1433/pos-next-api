@@ -128,6 +128,8 @@ exports.Prisma.ProductCategoryScalarFieldEnum = {
 exports.Prisma.BrandScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
+  brandImage: 'brandImage',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -148,6 +150,8 @@ exports.Prisma.UnitScalarFieldEnum = {
   shortName: 'shortName',
   baseUnit: 'baseUnit',
   status: 'status',
+  operator: 'operator',
+  operationValue: 'operationValue',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

@@ -20,8 +20,9 @@ export const fetchProductBrand = async (req: Request, res: Response, next: NextF
 export const insertProductBrand = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     const body = req.body;
     try {
-        const validation = validate(productBrandSchema, body);
-        const response = await createProductBrand(validation);
+        console.log(body);
+        // const validation = validate(productBrandSchema, body);
+        const response = await createProductBrand(body,req.file);
         return res.status(200).json({
             message: 'Successfully inserted',
             data: response
@@ -32,9 +33,9 @@ export const insertProductBrand = async (req: Request, res: Response, next: Next
 }
 
 export const updateProductBrand = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
-    const body: Brand = req.body;
+    const body = req.body;
     try {
-        const response = await modifyProductBrand(body);
+        const response = await modifyProductBrand(body,req.file);
         return res.status(200).json({
             message: 'Successfully updated',
             data: response
