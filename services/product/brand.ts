@@ -2,7 +2,6 @@ import { Brand, ProductCategory } from "@prisma/client";
 import { prisma } from "@prisma/index";
 
 
-
 export const getProductBrand = async () => {
     try {
         const response = await prisma.brand.findMany({
@@ -18,13 +17,13 @@ export const getProductBrand = async () => {
     }
 }
 
-export const createProductBrand = async (data: Omit<Brand, 'id' | "status" | "brandImage" | "createdAt" | "updatedAt">, brandImage: any) => {
+export const createProductBrand = async (data: Omit<Brand, 'id' | "status" | "brandImage" | "createdAt" | "updatedAt">, brandImage: Express.Multer.File) => {
     try {
         const response = await prisma.brand.create({
             data: {
                 name: data.name,
                 description: data.description,
-                brandImage
+                brandImage: brandImage?.filename || ''
             }
         })
         return response;
@@ -35,18 +34,18 @@ export const createProductBrand = async (data: Omit<Brand, 'id' | "status" | "br
 }
 
 
-export const modifyProductBrand = async (data: Brand, imageName: any) => {
-    const { id, brandImage, ...updateData } = data;
+export const modifyProductBrand = async (data: Omit<Brand, | "createdAt" | "updatedAt">, imageName: Express.Multer.File) => {
+
     try {
         const response = await prisma.brand.update({
             data: {
-                name: updateData.name,
-                brandImage: imageName,
-                description: updateData.description,
-                status: updateData.status
+                name: data.name,
+                brandImage: imageName?.filename || data.brandImage,
+                description: data.description,
+                status: Boolean(data.status)
             },
             where: {
-                id
+                id: Number(data.id)
             }
         })
         return response;

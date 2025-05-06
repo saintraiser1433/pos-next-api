@@ -18,11 +18,11 @@ export const fetchProductBrand = async (req: Request, res: Response, next: NextF
 
 
 export const insertProductBrand = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
-    const body = req.body;
+    const body = req.body as Omit<Brand, 'id' | "status" | "brandImage" | "createdAt" | "updatedAt">;
+    const file = req.file as Express.Multer.File;
     try {
-        console.log(body);
         // const validation = validate(productBrandSchema, body);
-        const response = await createProductBrand(body,req.file);
+        const response = await createProductBrand(body, file);
         return res.status(200).json({
             message: 'Successfully inserted',
             data: response
@@ -33,9 +33,10 @@ export const insertProductBrand = async (req: Request, res: Response, next: Next
 }
 
 export const updateProductBrand = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
-    const body = req.body;
+    const body = req.body as Omit<Brand,  "createdAt" | "updatedAt">;
+    const file = req.file as Express.Multer.File;
     try {
-        const response = await modifyProductBrand(body,req.file);
+        const response = await modifyProductBrand(body, file);
         return res.status(200).json({
             message: 'Successfully updated',
             data: response
