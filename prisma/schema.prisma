@@ -45,7 +45,8 @@ model Unit {
   id             Int       @id @default(autoincrement())
   name           String    @unique
   shortName      String    @db.VarChar(100)
-  baseUnit       String    @db.VarChar(100)
+  baseUnitId     Int
+  baseUnit       BaseUnit  @relation(fields: [baseUnitId], references: [id])
   status         Boolean   @default(true)
   operator       String    @db.VarChar(100)
   operationValue Int       @db.Integer
@@ -58,4 +59,6 @@ model BaseUnit {
   name      String    @unique
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
+
+  Unit Unit[]
 }

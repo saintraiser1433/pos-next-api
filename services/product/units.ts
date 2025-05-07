@@ -4,11 +4,15 @@ import { prisma } from "@prisma/index";
 
 
 
-export const getProductUnit = async () => {
+export const getProductUnit = async (baseUnitId?: number) => {
+
     try {
         const response = await prisma.unit.findMany({
             orderBy: {
                 createdAt: 'desc'
+            },
+            where: {
+                baseUnitId: baseUnitId ? baseUnitId : undefined
             }
         })
 

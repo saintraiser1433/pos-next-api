@@ -33,7 +33,9 @@ export const productVariants = z.object({
 export const productUnit = z.object({
   name: z.string().min(1, "Unit Name cannot be empty"),
   shortName: z.string().min(1, "Short Name cannot be empty"),
-  baseUnit: z.string().min(1, "Base Unit cannot be empty"),
+  baseUnitId: z.number({
+    required_error : 'Base Unit is required'
+  }),
   operator: z.string().min(1, "Base Unit cannot be empty"),
   operationValue: z.number().min(1, "Operator value cannot be empty"),
   status: z.boolean().optional(),

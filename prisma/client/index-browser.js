@@ -148,7 +148,7 @@ exports.Prisma.UnitScalarFieldEnum = {
   id: 'id',
   name: 'name',
   shortName: 'shortName',
-  baseUnit: 'baseUnit',
+  baseUnitId: 'baseUnitId',
   status: 'status',
   operator: 'operator',
   operationValue: 'operationValue',

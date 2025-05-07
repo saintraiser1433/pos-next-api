@@ -1228,6 +1228,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type BaseUnitCountOutputType
+   */
+
+  export type BaseUnitCountOutputType = {
+    Unit: number
+  }
+
+  export type BaseUnitCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Unit?: boolean | BaseUnitCountOutputTypeCountUnitArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BaseUnitCountOutputType without action
+   */
+  export type BaseUnitCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BaseUnitCountOutputType
+     */
+    select?: BaseUnitCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BaseUnitCountOutputType without action
+   */
+  export type BaseUnitCountOutputTypeCountUnitArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UnitWhereInput
+  }
+
 
   /**
    * Models
@@ -4373,11 +4403,13 @@ export namespace Prisma {
 
   export type UnitAvgAggregateOutputType = {
     id: number | null
+    baseUnitId: number | null
     operationValue: number | null
   }
 
   export type UnitSumAggregateOutputType = {
     id: number | null
+    baseUnitId: number | null
     operationValue: number | null
   }
 
@@ -4385,7 +4417,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     shortName: string | null
-    baseUnit: string | null
+    baseUnitId: number | null
     status: boolean | null
     operator: string | null
     operationValue: number | null
@@ -4397,7 +4429,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     shortName: string | null
-    baseUnit: string | null
+    baseUnitId: number | null
     status: boolean | null
     operator: string | null
     operationValue: number | null
@@ -4409,7 +4441,7 @@ export namespace Prisma {
     id: number
     name: number
     shortName: number
-    baseUnit: number
+    baseUnitId: number
     status: number
     operator: number
     operationValue: number
@@ -4421,11 +4453,13 @@ export namespace Prisma {
 
   export type UnitAvgAggregateInputType = {
     id?: true
+    baseUnitId?: true
     operationValue?: true
   }
 
   export type UnitSumAggregateInputType = {
     id?: true
+    baseUnitId?: true
     operationValue?: true
   }
 
@@ -4433,7 +4467,7 @@ export namespace Prisma {
     id?: true
     name?: true
     shortName?: true
-    baseUnit?: true
+    baseUnitId?: true
     status?: true
     operator?: true
     operationValue?: true
@@ -4445,7 +4479,7 @@ export namespace Prisma {
     id?: true
     name?: true
     shortName?: true
-    baseUnit?: true
+    baseUnitId?: true
     status?: true
     operator?: true
     operationValue?: true
@@ -4457,7 +4491,7 @@ export namespace Prisma {
     id?: true
     name?: true
     shortName?: true
-    baseUnit?: true
+    baseUnitId?: true
     status?: true
     operator?: true
     operationValue?: true
@@ -4556,7 +4590,7 @@ export namespace Prisma {
     id: number
     name: string
     shortName: string
-    baseUnit: string
+    baseUnitId: number
     status: boolean
     operator: string
     operationValue: number
@@ -4587,43 +4621,46 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     shortName?: boolean
-    baseUnit?: boolean
+    baseUnitId?: boolean
     status?: boolean
     operator?: boolean
     operationValue?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    baseUnit?: boolean | BaseUnitDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["unit"]>
 
   export type UnitSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     shortName?: boolean
-    baseUnit?: boolean
+    baseUnitId?: boolean
     status?: boolean
     operator?: boolean
     operationValue?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    baseUnit?: boolean | BaseUnitDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["unit"]>
 
   export type UnitSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     shortName?: boolean
-    baseUnit?: boolean
+    baseUnitId?: boolean
     status?: boolean
     operator?: boolean
     operationValue?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    baseUnit?: boolean | BaseUnitDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["unit"]>
 
   export type UnitSelectScalar = {
     id?: boolean
     name?: boolean
     shortName?: boolean
-    baseUnit?: boolean
+    baseUnitId?: boolean
     status?: boolean
     operator?: boolean
     operationValue?: boolean
@@ -4631,16 +4668,27 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UnitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "shortName" | "baseUnit" | "status" | "operator" | "operationValue" | "createdAt" | "updatedAt", ExtArgs["result"]["unit"]>
+  export type UnitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "shortName" | "baseUnitId" | "status" | "operator" | "operationValue" | "createdAt" | "updatedAt", ExtArgs["result"]["unit"]>
+  export type UnitInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baseUnit?: boolean | BaseUnitDefaultArgs<ExtArgs>
+  }
+  export type UnitIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baseUnit?: boolean | BaseUnitDefaultArgs<ExtArgs>
+  }
+  export type UnitIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baseUnit?: boolean | BaseUnitDefaultArgs<ExtArgs>
+  }
 
   export type $UnitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Unit"
-    objects: {}
+    objects: {
+      baseUnit: Prisma.$BaseUnitPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       shortName: string
-      baseUnit: string
+      baseUnitId: number
       status: boolean
       operator: string
       operationValue: number
@@ -5040,6 +5088,7 @@ export namespace Prisma {
    */
   export interface Prisma__UnitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    baseUnit<T extends BaseUnitDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BaseUnitDefaultArgs<ExtArgs>>): Prisma__BaseUnitClient<$Result.GetResult<Prisma.$BaseUnitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5072,7 +5121,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Unit", 'Int'>
     readonly name: FieldRef<"Unit", 'String'>
     readonly shortName: FieldRef<"Unit", 'String'>
-    readonly baseUnit: FieldRef<"Unit", 'String'>
+    readonly baseUnitId: FieldRef<"Unit", 'Int'>
     readonly status: FieldRef<"Unit", 'Boolean'>
     readonly operator: FieldRef<"Unit", 'String'>
     readonly operationValue: FieldRef<"Unit", 'Int'>
@@ -5095,6 +5144,10 @@ export namespace Prisma {
      */
     omit?: UnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
+    /**
      * Filter, which Unit to fetch.
      */
     where: UnitWhereUniqueInput
@@ -5113,6 +5166,10 @@ export namespace Prisma {
      */
     omit?: UnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
+    /**
      * Filter, which Unit to fetch.
      */
     where: UnitWhereUniqueInput
@@ -5130,6 +5187,10 @@ export namespace Prisma {
      * Omit specific fields from the Unit
      */
     omit?: UnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
     /**
      * Filter, which Unit to fetch.
      */
@@ -5179,6 +5240,10 @@ export namespace Prisma {
      */
     omit?: UnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
+    /**
      * Filter, which Unit to fetch.
      */
     where?: UnitWhereInput
@@ -5227,6 +5292,10 @@ export namespace Prisma {
      */
     omit?: UnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
+    /**
      * Filter, which Units to fetch.
      */
     where?: UnitWhereInput
@@ -5270,6 +5339,10 @@ export namespace Prisma {
      */
     omit?: UnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
+    /**
      * The data needed to create a Unit.
      */
     data: XOR<UnitCreateInput, UnitUncheckedCreateInput>
@@ -5303,6 +5376,10 @@ export namespace Prisma {
      */
     data: UnitCreateManyInput | UnitCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5317,6 +5394,10 @@ export namespace Prisma {
      * Omit specific fields from the Unit
      */
     omit?: UnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
     /**
      * The data needed to update a Unit.
      */
@@ -5369,6 +5450,10 @@ export namespace Prisma {
      * Limit how many Units to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5383,6 +5468,10 @@ export namespace Prisma {
      * Omit specific fields from the Unit
      */
     omit?: UnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
     /**
      * The filter to search for the Unit to update in case it exists.
      */
@@ -5409,6 +5498,10 @@ export namespace Prisma {
      * Omit specific fields from the Unit
      */
     omit?: UnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
     /**
      * Filter which Unit to delete.
      */
@@ -5441,6 +5534,10 @@ export namespace Prisma {
      * Omit specific fields from the Unit
      */
     omit?: UnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
   }
 
 
@@ -5634,6 +5731,8 @@ export namespace Prisma {
     name?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    Unit?: boolean | BaseUnit$UnitArgs<ExtArgs>
+    _count?: boolean | BaseUnitCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["baseUnit"]>
 
   export type BaseUnitSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5658,10 +5757,18 @@ export namespace Prisma {
   }
 
   export type BaseUnitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["baseUnit"]>
+  export type BaseUnitInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Unit?: boolean | BaseUnit$UnitArgs<ExtArgs>
+    _count?: boolean | BaseUnitCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BaseUnitIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type BaseUnitIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $BaseUnitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BaseUnit"
-    objects: {}
+    objects: {
+      Unit: Prisma.$UnitPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -6061,6 +6168,7 @@ export namespace Prisma {
    */
   export interface Prisma__BaseUnitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    Unit<T extends BaseUnit$UnitArgs<ExtArgs> = {}>(args?: Subset<T, BaseUnit$UnitArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6111,6 +6219,10 @@ export namespace Prisma {
      */
     omit?: BaseUnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
+    /**
      * Filter, which BaseUnit to fetch.
      */
     where: BaseUnitWhereUniqueInput
@@ -6129,6 +6241,10 @@ export namespace Prisma {
      */
     omit?: BaseUnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
+    /**
      * Filter, which BaseUnit to fetch.
      */
     where: BaseUnitWhereUniqueInput
@@ -6146,6 +6262,10 @@ export namespace Prisma {
      * Omit specific fields from the BaseUnit
      */
     omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
     /**
      * Filter, which BaseUnit to fetch.
      */
@@ -6195,6 +6315,10 @@ export namespace Prisma {
      */
     omit?: BaseUnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
+    /**
      * Filter, which BaseUnit to fetch.
      */
     where?: BaseUnitWhereInput
@@ -6243,6 +6367,10 @@ export namespace Prisma {
      */
     omit?: BaseUnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
+    /**
      * Filter, which BaseUnits to fetch.
      */
     where?: BaseUnitWhereInput
@@ -6285,6 +6413,10 @@ export namespace Prisma {
      * Omit specific fields from the BaseUnit
      */
     omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
     /**
      * The data needed to create a BaseUnit.
      */
@@ -6333,6 +6465,10 @@ export namespace Prisma {
      * Omit specific fields from the BaseUnit
      */
     omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
     /**
      * The data needed to update a BaseUnit.
      */
@@ -6400,6 +6536,10 @@ export namespace Prisma {
      */
     omit?: BaseUnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
+    /**
      * The filter to search for the BaseUnit to update in case it exists.
      */
     where: BaseUnitWhereUniqueInput
@@ -6426,6 +6566,10 @@ export namespace Prisma {
      */
     omit?: BaseUnitOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
+    /**
      * Filter which BaseUnit to delete.
      */
     where: BaseUnitWhereUniqueInput
@@ -6446,6 +6590,30 @@ export namespace Prisma {
   }
 
   /**
+   * BaseUnit.Unit
+   */
+  export type BaseUnit$UnitArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Unit
+     */
+    select?: UnitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Unit
+     */
+    omit?: UnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnitInclude<ExtArgs> | null
+    where?: UnitWhereInput
+    orderBy?: UnitOrderByWithRelationInput | UnitOrderByWithRelationInput[]
+    cursor?: UnitWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UnitScalarFieldEnum | UnitScalarFieldEnum[]
+  }
+
+  /**
    * BaseUnit without action
    */
   export type BaseUnitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6457,6 +6625,10 @@ export namespace Prisma {
      * Omit specific fields from the BaseUnit
      */
     omit?: BaseUnitOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BaseUnitInclude<ExtArgs> | null
   }
 
 
@@ -6514,7 +6686,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     shortName: 'shortName',
-    baseUnit: 'baseUnit',
+    baseUnitId: 'baseUnitId',
     status: 'status',
     operator: 'operator',
     operationValue: 'operationValue',
@@ -6814,24 +6986,26 @@ export namespace Prisma {
     id?: IntFilter<"Unit"> | number
     name?: StringFilter<"Unit"> | string
     shortName?: StringFilter<"Unit"> | string
-    baseUnit?: StringFilter<"Unit"> | string
+    baseUnitId?: IntFilter<"Unit"> | number
     status?: BoolFilter<"Unit"> | boolean
     operator?: StringFilter<"Unit"> | string
     operationValue?: IntFilter<"Unit"> | number
     createdAt?: DateTimeFilter<"Unit"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Unit"> | Date | string | null
+    baseUnit?: XOR<BaseUnitScalarRelationFilter, BaseUnitWhereInput>
   }
 
   export type UnitOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     shortName?: SortOrder
-    baseUnit?: SortOrder
+    baseUnitId?: SortOrder
     status?: SortOrder
     operator?: SortOrder
     operationValue?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    baseUnit?: BaseUnitOrderByWithRelationInput
   }
 
   export type UnitWhereUniqueInput = Prisma.AtLeast<{
@@ -6841,19 +7015,20 @@ export namespace Prisma {
     OR?: UnitWhereInput[]
     NOT?: UnitWhereInput | UnitWhereInput[]
     shortName?: StringFilter<"Unit"> | string
-    baseUnit?: StringFilter<"Unit"> | string
+    baseUnitId?: IntFilter<"Unit"> | number
     status?: BoolFilter<"Unit"> | boolean
     operator?: StringFilter<"Unit"> | string
     operationValue?: IntFilter<"Unit"> | number
     createdAt?: DateTimeFilter<"Unit"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Unit"> | Date | string | null
+    baseUnit?: XOR<BaseUnitScalarRelationFilter, BaseUnitWhereInput>
   }, "id" | "name">
 
   export type UnitOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     shortName?: SortOrder
-    baseUnit?: SortOrder
+    baseUnitId?: SortOrder
     status?: SortOrder
     operator?: SortOrder
     operationValue?: SortOrder
@@ -6873,7 +7048,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Unit"> | number
     name?: StringWithAggregatesFilter<"Unit"> | string
     shortName?: StringWithAggregatesFilter<"Unit"> | string
-    baseUnit?: StringWithAggregatesFilter<"Unit"> | string
+    baseUnitId?: IntWithAggregatesFilter<"Unit"> | number
     status?: BoolWithAggregatesFilter<"Unit"> | boolean
     operator?: StringWithAggregatesFilter<"Unit"> | string
     operationValue?: IntWithAggregatesFilter<"Unit"> | number
@@ -6889,6 +7064,7 @@ export namespace Prisma {
     name?: StringFilter<"BaseUnit"> | string
     createdAt?: DateTimeFilter<"BaseUnit"> | Date | string
     updatedAt?: DateTimeNullableFilter<"BaseUnit"> | Date | string | null
+    Unit?: UnitListRelationFilter
   }
 
   export type BaseUnitOrderByWithRelationInput = {
@@ -6896,6 +7072,7 @@ export namespace Prisma {
     name?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    Unit?: UnitOrderByRelationAggregateInput
   }
 
   export type BaseUnitWhereUniqueInput = Prisma.AtLeast<{
@@ -6906,6 +7083,7 @@ export namespace Prisma {
     NOT?: BaseUnitWhereInput | BaseUnitWhereInput[]
     createdAt?: DateTimeFilter<"BaseUnit"> | Date | string
     updatedAt?: DateTimeNullableFilter<"BaseUnit"> | Date | string | null
+    Unit?: UnitListRelationFilter
   }, "id" | "name">
 
   export type BaseUnitOrderByWithAggregationInput = {
@@ -7113,19 +7291,19 @@ export namespace Prisma {
   export type UnitCreateInput = {
     name: string
     shortName: string
-    baseUnit: string
     status?: boolean
     operator: string
     operationValue: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    baseUnit: BaseUnitCreateNestedOneWithoutUnitInput
   }
 
   export type UnitUncheckedCreateInput = {
     id?: number
     name: string
     shortName: string
-    baseUnit: string
+    baseUnitId: number
     status?: boolean
     operator: string
     operationValue: number
@@ -7136,19 +7314,19 @@ export namespace Prisma {
   export type UnitUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
-    baseUnit?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     operator?: StringFieldUpdateOperationsInput | string
     operationValue?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    baseUnit?: BaseUnitUpdateOneRequiredWithoutUnitNestedInput
   }
 
   export type UnitUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
-    baseUnit?: StringFieldUpdateOperationsInput | string
+    baseUnitId?: IntFieldUpdateOperationsInput | number
     status?: BoolFieldUpdateOperationsInput | boolean
     operator?: StringFieldUpdateOperationsInput | string
     operationValue?: IntFieldUpdateOperationsInput | number
@@ -7160,7 +7338,7 @@ export namespace Prisma {
     id?: number
     name: string
     shortName: string
-    baseUnit: string
+    baseUnitId: number
     status?: boolean
     operator: string
     operationValue: number
@@ -7171,7 +7349,6 @@ export namespace Prisma {
   export type UnitUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
-    baseUnit?: StringFieldUpdateOperationsInput | string
     status?: BoolFieldUpdateOperationsInput | boolean
     operator?: StringFieldUpdateOperationsInput | string
     operationValue?: IntFieldUpdateOperationsInput | number
@@ -7183,7 +7360,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     shortName?: StringFieldUpdateOperationsInput | string
-    baseUnit?: StringFieldUpdateOperationsInput | string
+    baseUnitId?: IntFieldUpdateOperationsInput | number
     status?: BoolFieldUpdateOperationsInput | boolean
     operator?: StringFieldUpdateOperationsInput | string
     operationValue?: IntFieldUpdateOperationsInput | number
@@ -7195,6 +7372,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    Unit?: UnitCreateNestedManyWithoutBaseUnitInput
   }
 
   export type BaseUnitUncheckedCreateInput = {
@@ -7202,12 +7380,14 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    Unit?: UnitUncheckedCreateNestedManyWithoutBaseUnitInput
   }
 
   export type BaseUnitUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Unit?: UnitUpdateManyWithoutBaseUnitNestedInput
   }
 
   export type BaseUnitUncheckedUpdateInput = {
@@ -7215,6 +7395,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Unit?: UnitUncheckedUpdateManyWithoutBaseUnitNestedInput
   }
 
   export type BaseUnitCreateManyInput = {
@@ -7503,11 +7684,16 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type BaseUnitScalarRelationFilter = {
+    is?: BaseUnitWhereInput
+    isNot?: BaseUnitWhereInput
+  }
+
   export type UnitCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     shortName?: SortOrder
-    baseUnit?: SortOrder
+    baseUnitId?: SortOrder
     status?: SortOrder
     operator?: SortOrder
     operationValue?: SortOrder
@@ -7517,6 +7703,7 @@ export namespace Prisma {
 
   export type UnitAvgOrderByAggregateInput = {
     id?: SortOrder
+    baseUnitId?: SortOrder
     operationValue?: SortOrder
   }
 
@@ -7524,7 +7711,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     shortName?: SortOrder
-    baseUnit?: SortOrder
+    baseUnitId?: SortOrder
     status?: SortOrder
     operator?: SortOrder
     operationValue?: SortOrder
@@ -7536,7 +7723,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     shortName?: SortOrder
-    baseUnit?: SortOrder
+    baseUnitId?: SortOrder
     status?: SortOrder
     operator?: SortOrder
     operationValue?: SortOrder
@@ -7546,7 +7733,18 @@ export namespace Prisma {
 
   export type UnitSumOrderByAggregateInput = {
     id?: SortOrder
+    baseUnitId?: SortOrder
     operationValue?: SortOrder
+  }
+
+  export type UnitListRelationFilter = {
+    every?: UnitWhereInput
+    some?: UnitWhereInput
+    none?: UnitWhereInput
+  }
+
+  export type UnitOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type BaseUnitCountOrderByAggregateInput = {
@@ -7604,6 +7802,62 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type BaseUnitCreateNestedOneWithoutUnitInput = {
+    create?: XOR<BaseUnitCreateWithoutUnitInput, BaseUnitUncheckedCreateWithoutUnitInput>
+    connectOrCreate?: BaseUnitCreateOrConnectWithoutUnitInput
+    connect?: BaseUnitWhereUniqueInput
+  }
+
+  export type BaseUnitUpdateOneRequiredWithoutUnitNestedInput = {
+    create?: XOR<BaseUnitCreateWithoutUnitInput, BaseUnitUncheckedCreateWithoutUnitInput>
+    connectOrCreate?: BaseUnitCreateOrConnectWithoutUnitInput
+    upsert?: BaseUnitUpsertWithoutUnitInput
+    connect?: BaseUnitWhereUniqueInput
+    update?: XOR<XOR<BaseUnitUpdateToOneWithWhereWithoutUnitInput, BaseUnitUpdateWithoutUnitInput>, BaseUnitUncheckedUpdateWithoutUnitInput>
+  }
+
+  export type UnitCreateNestedManyWithoutBaseUnitInput = {
+    create?: XOR<UnitCreateWithoutBaseUnitInput, UnitUncheckedCreateWithoutBaseUnitInput> | UnitCreateWithoutBaseUnitInput[] | UnitUncheckedCreateWithoutBaseUnitInput[]
+    connectOrCreate?: UnitCreateOrConnectWithoutBaseUnitInput | UnitCreateOrConnectWithoutBaseUnitInput[]
+    createMany?: UnitCreateManyBaseUnitInputEnvelope
+    connect?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+  }
+
+  export type UnitUncheckedCreateNestedManyWithoutBaseUnitInput = {
+    create?: XOR<UnitCreateWithoutBaseUnitInput, UnitUncheckedCreateWithoutBaseUnitInput> | UnitCreateWithoutBaseUnitInput[] | UnitUncheckedCreateWithoutBaseUnitInput[]
+    connectOrCreate?: UnitCreateOrConnectWithoutBaseUnitInput | UnitCreateOrConnectWithoutBaseUnitInput[]
+    createMany?: UnitCreateManyBaseUnitInputEnvelope
+    connect?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+  }
+
+  export type UnitUpdateManyWithoutBaseUnitNestedInput = {
+    create?: XOR<UnitCreateWithoutBaseUnitInput, UnitUncheckedCreateWithoutBaseUnitInput> | UnitCreateWithoutBaseUnitInput[] | UnitUncheckedCreateWithoutBaseUnitInput[]
+    connectOrCreate?: UnitCreateOrConnectWithoutBaseUnitInput | UnitCreateOrConnectWithoutBaseUnitInput[]
+    upsert?: UnitUpsertWithWhereUniqueWithoutBaseUnitInput | UnitUpsertWithWhereUniqueWithoutBaseUnitInput[]
+    createMany?: UnitCreateManyBaseUnitInputEnvelope
+    set?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    disconnect?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    delete?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    connect?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    update?: UnitUpdateWithWhereUniqueWithoutBaseUnitInput | UnitUpdateWithWhereUniqueWithoutBaseUnitInput[]
+    updateMany?: UnitUpdateManyWithWhereWithoutBaseUnitInput | UnitUpdateManyWithWhereWithoutBaseUnitInput[]
+    deleteMany?: UnitScalarWhereInput | UnitScalarWhereInput[]
+  }
+
+  export type UnitUncheckedUpdateManyWithoutBaseUnitNestedInput = {
+    create?: XOR<UnitCreateWithoutBaseUnitInput, UnitUncheckedCreateWithoutBaseUnitInput> | UnitCreateWithoutBaseUnitInput[] | UnitUncheckedCreateWithoutBaseUnitInput[]
+    connectOrCreate?: UnitCreateOrConnectWithoutBaseUnitInput | UnitCreateOrConnectWithoutBaseUnitInput[]
+    upsert?: UnitUpsertWithWhereUniqueWithoutBaseUnitInput | UnitUpsertWithWhereUniqueWithoutBaseUnitInput[]
+    createMany?: UnitCreateManyBaseUnitInputEnvelope
+    set?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    disconnect?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    delete?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    connect?: UnitWhereUniqueInput | UnitWhereUniqueInput[]
+    update?: UnitUpdateWithWhereUniqueWithoutBaseUnitInput | UnitUpdateWithWhereUniqueWithoutBaseUnitInput[]
+    updateMany?: UnitUpdateManyWithWhereWithoutBaseUnitInput | UnitUpdateManyWithWhereWithoutBaseUnitInput[]
+    deleteMany?: UnitScalarWhereInput | UnitScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7778,6 +8032,153 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type BaseUnitCreateWithoutUnitInput = {
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type BaseUnitUncheckedCreateWithoutUnitInput = {
+    id?: number
+    name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type BaseUnitCreateOrConnectWithoutUnitInput = {
+    where: BaseUnitWhereUniqueInput
+    create: XOR<BaseUnitCreateWithoutUnitInput, BaseUnitUncheckedCreateWithoutUnitInput>
+  }
+
+  export type BaseUnitUpsertWithoutUnitInput = {
+    update: XOR<BaseUnitUpdateWithoutUnitInput, BaseUnitUncheckedUpdateWithoutUnitInput>
+    create: XOR<BaseUnitCreateWithoutUnitInput, BaseUnitUncheckedCreateWithoutUnitInput>
+    where?: BaseUnitWhereInput
+  }
+
+  export type BaseUnitUpdateToOneWithWhereWithoutUnitInput = {
+    where?: BaseUnitWhereInput
+    data: XOR<BaseUnitUpdateWithoutUnitInput, BaseUnitUncheckedUpdateWithoutUnitInput>
+  }
+
+  export type BaseUnitUpdateWithoutUnitInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type BaseUnitUncheckedUpdateWithoutUnitInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UnitCreateWithoutBaseUnitInput = {
+    name: string
+    shortName: string
+    status?: boolean
+    operator: string
+    operationValue: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type UnitUncheckedCreateWithoutBaseUnitInput = {
+    id?: number
+    name: string
+    shortName: string
+    status?: boolean
+    operator: string
+    operationValue: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type UnitCreateOrConnectWithoutBaseUnitInput = {
+    where: UnitWhereUniqueInput
+    create: XOR<UnitCreateWithoutBaseUnitInput, UnitUncheckedCreateWithoutBaseUnitInput>
+  }
+
+  export type UnitCreateManyBaseUnitInputEnvelope = {
+    data: UnitCreateManyBaseUnitInput | UnitCreateManyBaseUnitInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UnitUpsertWithWhereUniqueWithoutBaseUnitInput = {
+    where: UnitWhereUniqueInput
+    update: XOR<UnitUpdateWithoutBaseUnitInput, UnitUncheckedUpdateWithoutBaseUnitInput>
+    create: XOR<UnitCreateWithoutBaseUnitInput, UnitUncheckedCreateWithoutBaseUnitInput>
+  }
+
+  export type UnitUpdateWithWhereUniqueWithoutBaseUnitInput = {
+    where: UnitWhereUniqueInput
+    data: XOR<UnitUpdateWithoutBaseUnitInput, UnitUncheckedUpdateWithoutBaseUnitInput>
+  }
+
+  export type UnitUpdateManyWithWhereWithoutBaseUnitInput = {
+    where: UnitScalarWhereInput
+    data: XOR<UnitUpdateManyMutationInput, UnitUncheckedUpdateManyWithoutBaseUnitInput>
+  }
+
+  export type UnitScalarWhereInput = {
+    AND?: UnitScalarWhereInput | UnitScalarWhereInput[]
+    OR?: UnitScalarWhereInput[]
+    NOT?: UnitScalarWhereInput | UnitScalarWhereInput[]
+    id?: IntFilter<"Unit"> | number
+    name?: StringFilter<"Unit"> | string
+    shortName?: StringFilter<"Unit"> | string
+    baseUnitId?: IntFilter<"Unit"> | number
+    status?: BoolFilter<"Unit"> | boolean
+    operator?: StringFilter<"Unit"> | string
+    operationValue?: IntFilter<"Unit"> | number
+    createdAt?: DateTimeFilter<"Unit"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Unit"> | Date | string | null
+  }
+
+  export type UnitCreateManyBaseUnitInput = {
+    id?: number
+    name: string
+    shortName: string
+    status?: boolean
+    operator: string
+    operationValue: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type UnitUpdateWithoutBaseUnitInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+    operator?: StringFieldUpdateOperationsInput | string
+    operationValue?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UnitUncheckedUpdateWithoutBaseUnitInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+    operator?: StringFieldUpdateOperationsInput | string
+    operationValue?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type UnitUncheckedUpdateManyWithoutBaseUnitInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    status?: BoolFieldUpdateOperationsInput | boolean
+    operator?: StringFieldUpdateOperationsInput | string
+    operationValue?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 
