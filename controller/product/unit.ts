@@ -9,6 +9,7 @@ import { getProductUnit, createProductUnit, modifyProductUnit, removeProductUnit
 
 export const fetchProductUnit = async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
     const baseUnitId = parseId(req.query.baseUnitId as string) ?? undefined;
+    console.log(baseUnitId);
     try {
         const response = await getProductUnit(baseUnitId);
         return res.status(200).json(response);
