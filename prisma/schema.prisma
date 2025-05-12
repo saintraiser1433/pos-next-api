@@ -14,12 +14,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum BarcodeType {
+  CODE128 @map("CODE 128")
+  CODE39  @map("CODE 39")
+}
+
+enum TaxType {
+  EXCLUSIVE
+  INCLUSIVE
+}
+
+enum ProductType {
+  STANDARD
+  VARIABLE
+}
+
+enum PaymentType {
+  MONTH
+  DAYS
+  YEARS
+}
+
 model ProductCategory {
   id        Int       @id @default(autoincrement())
   name      String    @unique
   status    Boolean   @default(true)
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
+  Product   Product[]
 }
 
 model Brand {
@@ -30,6 +52,7 @@ model Brand {
   status      Boolean   @default(true)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime? @updatedAt
+  Product     Product[]
 }
 
 model Variations {
@@ -52,13 +75,46 @@ model Unit {
   operationValue Int       @db.Integer
   createdAt      DateTime  @default(now())
   updatedAt      DateTime? @updatedAt
+  saleUnit       Product[] @relation(name: "SaleUnit")
+  purchaseUnit   Product[] @relation(name: "PurchaseUnit")
 }
 
 model BaseUnit {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+  productUnit Product[]
+  Unit        Unit[]
+}
 
-  Unit Unit[]
+model Product {
+  id                  Int             @id @default(autoincrement())
+  name                String          @unique
+  barcode             String          @unique
+  barcodeType         BarcodeType
+  categoryId          Int
+  category            ProductCategory @relation(fields: [categoryId], references: [id])
+  brandId             Int
+  brand               Brand           @relation(fields: [brandId], references: [id])
+  orderTax            Int?            @default(0)
+  taxType             TaxType
+  productImage        String?
+  productType         ProductType
+  productCost         Decimal         @db.Decimal(10, 2)
+  productPrice        Decimal         @db.Decimal(10, 2)
+  productUnitId       Int
+  productUnit         BaseUnit        @relation(fields: [productUnitId], references: [id])
+  saleUnitId          Int
+  saleUnit            Unit            @relation(name: "SaleUnit", fields: [saleUnitId], references: [id])
+  purchaseUnitId      Int
+  purchaseUnit        Unit            @relation(name: "PurchaseUnit", fields: [purchaseUnitId], references: [id])
+  stockAlert          Int?            @default(0)
+  warrantyPeriod      Int?            @default(0)
+  warrantyPaymentType PaymentType
+  warrantyTerms       String?
+  isGuaranteed        Boolean         @default(false)
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime?       @updatedAt
+  status              Boolean         @default(true)
 }

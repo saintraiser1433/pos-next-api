@@ -163,6 +163,32 @@ exports.Prisma.BaseUnitScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  barcode: 'barcode',
+  barcodeType: 'barcodeType',
+  categoryId: 'categoryId',
+  brandId: 'brandId',
+  orderTax: 'orderTax',
+  taxType: 'taxType',
+  productImage: 'productImage',
+  productType: 'productType',
+  productCost: 'productCost',
+  productPrice: 'productPrice',
+  productUnitId: 'productUnitId',
+  saleUnitId: 'saleUnitId',
+  purchaseUnitId: 'purchaseUnitId',
+  stockAlert: 'stockAlert',
+  warrantyPeriod: 'warrantyPeriod',
+  warrantyPaymentType: 'warrantyPaymentType',
+  warrantyTerms: 'warrantyTerms',
+  isGuaranteed: 'isGuaranteed',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  status: 'status'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -177,14 +203,34 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.BarcodeType = exports.$Enums.BarcodeType = {
+  CODE128: 'CODE128',
+  CODE39: 'CODE39'
+};
 
+exports.TaxType = exports.$Enums.TaxType = {
+  EXCLUSIVE: 'EXCLUSIVE',
+  INCLUSIVE: 'INCLUSIVE'
+};
+
+exports.ProductType = exports.$Enums.ProductType = {
+  STANDARD: 'STANDARD',
+  VARIABLE: 'VARIABLE'
+};
+
+exports.PaymentType = exports.$Enums.PaymentType = {
+  MONTH: 'MONTH',
+  DAYS: 'DAYS',
+  YEARS: 'YEARS'
+};
 
 exports.Prisma.ModelName = {
   ProductCategory: 'ProductCategory',
   Brand: 'Brand',
   Variations: 'Variations',
   Unit: 'Unit',
-  BaseUnit: 'BaseUnit'
+  BaseUnit: 'BaseUnit',
+  Product: 'Product'
 };
 
 /**
