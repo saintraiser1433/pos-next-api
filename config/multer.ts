@@ -9,6 +9,9 @@ const dynamicStorage = multer.diskStorage({
             case 'brandImage':
                 folder += 'brand/';       // PDFs go here
                 break;
+            case 'productImage':
+                folder += 'product/';       // PDFs go here
+                break;
             default:
                 folder += 'others/';      // Fallback (optional)
         }
@@ -24,12 +27,12 @@ const dynamicStorage = multer.diskStorage({
 // Single Multer instance with combined validation
 export const unifiedUpload = multer({
     storage: dynamicStorage,
-    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit for all files
+    limits: { fileSize: 5 * 1024 * 1024 },
     fileFilter: (req, file, cb) => {
         if (
-            (file.fieldname === 'brandImage' && file.mimetype.startsWith('image/'))
+            (file.fieldname === 'brandImage' || file.fieldname === 'productImage' && file.mimetype.startsWith('image/'))
         ) {
-            cb(null, true); // Accept based on field + type
+            cb(null, true);
         } else {
             cb(new Error(`Invalid file type for ${file.fieldname}`));
         }
